@@ -21,15 +21,48 @@ import plotly.graph_objects as go
 import plotly.express as px
 import networkx as nx
 
-from database import init_db, SessionLocal, EnterpriseStudent, EnterpriseLog
-from ai_engine import ai_engine_v5
-from colleges_catalog import INSTITUTIONS_CATALOG, PROGRAMS_CATALOG, STUDENT_CATEGORIES
-from rag_engine import rag_engine
-from fraud_scanner import fraud_scanner, PRESET_FORENSIC_CASES
-from simulation_engine import policy_engine
-from geospatial_dss import geospatial_engine
-from interop_hub import interop_hub
-from nexus_store import get_nexus_store
+import sys
+from pathlib import Path
+
+# Configure paths for modular backend and root packages
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+_BACKEND_DIR = _PROJECT_ROOT / "backend"
+if str(_BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(_BACKEND_DIR))
+_SCRIPTS_DIR = _PROJECT_ROOT / "scripts"
+if str(_SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS_DIR))
+
+try:
+    from database import init_db, SessionLocal, EnterpriseStudent, EnterpriseLog
+    from colleges_catalog import INSTITUTIONS_CATALOG, PROGRAMS_CATALOG, STUDENT_CATEGORIES
+    from nexus_store import get_nexus_store
+    from ai_engine import ai_engine_v5
+    from fraud_scanner import fraud_scanner, PRESET_FORENSIC_CASES
+    from rag_engine import rag_engine
+    from geospatial_dss import geospatial_engine
+    from interop_hub import interop_hub
+    try:
+        from simulation_engine import policy_engine
+    except ImportError:
+        from backend.simulation_engine import policy_engine
+    from frontend.components import (
+        render_gnn_topology_component,
+        render_geospatial_heatmap_component,
+        render_guardrails_kpi_component,
+        render_audit_ledger_component,
+        render_copilot_sidebar_component
+    )
+except (ImportError, ValueError):
+    from backend.database import init_db, SessionLocal, EnterpriseStudent, EnterpriseLog, INSTITUTIONS_CATALOG, PROGRAMS_CATALOG, STUDENT_CATEGORIES, get_nexus_store
+    from backend.ai_engine import ai_engine_v5
+    from backend.fraud_scanner import fraud_scanner, PRESET_FORENSIC_CASES
+    from backend.rag_engine import rag_engine
+    from backend.simulation_engine import policy_engine
+    from backend.geospatial_dss import geospatial_engine
+    from backend.interop_hub import interop_hub
 
 # ==========================================
 # PAGE CONFIGURATION & METADATA

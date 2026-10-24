@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" width="800" height="160">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="160" rx="12" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="80" cy="80" r="45" fill="#0284c7" fill-opacity="0.1" stroke="#38bdf8" stroke-width="2"/>
+  <text x="80" y="88" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="900" fill="#38bdf8" text-anchor="middle">APAAR</text>
+  <text x="160" y="65" font-family="'Inter', sans-serif" font-size="24" font-weight="800" fill="#f8fafc">AICTE NEXUS INDIA | APEX COMMAND GRID</text>
+  <text x="160" y="95" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#94a3b8">Ministry of Education | Graph Neural Network Proxy Interception &amp; Quantum-Safe Cryptographic Verifier</text>
+  <rect x="160" y="112" width="130" height="24" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+  <text x="225" y="128" font-family="monospace" font-size="11" font-weight="bold" fill="#34d399" text-anchor="middle">SUB-15MS GNN</text>
+  <rect x="300" y="112" width="140" height="24" rx="4" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="370" y="128" font-family="monospace" font-size="11" font-weight="bold" fill="#93c5fd" text-anchor="middle">SHA-256 LEDGER</text>
+  <rect x="450" y="112" width="160" height="24" rx="4" fill="#4c1d95" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="530" y="128" font-family="monospace" font-size="11" font-weight="bold" fill="#c4b5fd" text-anchor="middle">NEURAL RAG COPILOT</text>
+</svg>

@@ -1,0 +1,119 @@
+# ==============================================================================
+# AICTE NEXUS INDIA (Apex-Ind) - DOCKER COMPOSE ORCHESTRATION
+# Ministry of Education | Government of India
+# Multi-Service Production Deployment: Streamlit Hub + FastAPI Gateway + DB
+# ==============================================================================
+
+version: "3.8"
+
+networks:
+  aicte-mesh:
+    name: aicte-internal-mesh
+    driver: bridge
+
+volumes:
+  aicte-storage:
+    name: aicte-enterprise-storage
+  aicte-logs:
+    name: aicte-audit-logs
+
+services:
+  # ----------------------------------------------------------------------------
+  # SERVICE 1: Streamlit National Command Center (Executive UI Dashboard)
+  # ----------------------------------------------------------------------------
+  command-center:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aicte-nexus-command-center
+    restart: unless-stopped
+    command: ["streamlit", "run", "frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    env_file:
+      - .env
+    environment:
+      - AICTE_ENV=production
+      - AICTE_PORT=8501
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      - FASTAPI_INTERNAL_URL=http://api-gateway:8080
+    ports:
+      - "8501:8501"
+    volumes:
+      - aicte-storage:/app/data
+      - aicte-logs:/app/logs
+    networks:
+      - aicte-mesh
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2048M
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+
+  # ----------------------------------------------------------------------------
+  # SERVICE 2: FastAPI Enterprise REST Gateway (ERP & Recruitment Verification)
+  # ----------------------------------------------------------------------------
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aicte-nexus-api-gateway
+    restart: unless-stopped
+    command: ["uvicorn", "backend.api_gateway:app", "--host", "0.0.0.0", "--port", "8080"]
+    env_file:
+      - .env
+    environment:
+      - AICTE_ENV=production
+      - API_PORT=8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - aicte-storage:/app/data
+      - aicte-logs:/app/logs
+    networks:
+      - aicte-mesh
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: 1024M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+
+  # ----------------------------------------------------------------------------
+  # SERVICE 3: Redis Cache (In-Memory Inference & Vector Telemetry Acceleration)
+  # ----------------------------------------------------------------------------
+  redis-cache:
+    image: redis:7.2-alpine
+    container_name: aicte-nexus-redis-cache
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "512mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - aicte-storage:/data
+    networks:
+      - aicte-mesh
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
