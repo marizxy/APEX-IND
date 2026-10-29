@@ -1,5 +1,5 @@
 # ==============================================================================
-# AICTE NEXUS INDIA (Apex-Ind) - MULTI-STAGE OPTIMIZED DOCKERFILE
+# AICTE NEXUS INDIA (Tech Guys) - MULTI-STAGE OPTIMIZED DOCKERFILE
 # Ministry of Education | Government of India
 # Sovereign National Regulatory Command Center & Fraud Interception Grid
 # ==============================================================================
@@ -36,8 +36,8 @@ RUN pip install --user --no-warn-script-location -r requirements.txt
 # ------------------------------------------------------------------------------
 FROM python:3.10-slim-bullseye AS runner
 
-LABEL maintainer="AICTE Nexus Team <security@aicte-nexus.gov.in>" \
-      org.opencontainers.image.title="AICTE Nexus India (Apex-Ind)" \
+LABEL maintainer="Tech Guys <security@aicte-nexus.gov.in>" \
+      org.opencontainers.image.title="AICTE Nexus India (Tech Guys)" \
       org.opencontainers.image.description="National APAAR Regulatory Command Center" \
       org.opencontainers.image.version="5.0.0" \
       org.opencontainers.image.vendor="Ministry of Education, Government of India"

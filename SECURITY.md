@@ -1,12 +1,12 @@
 # 🛡️ Security Policy & Cryptographic Assurance
-### AICTE Nexus India (Apex-Ind) | National APAAR Command Center
+### AICTE Nexus India (Tech Guys) | National APAAR Command Center
 **Ministry of Education | Government of India**
 
 ---
 
 ## 1. Security Overview & Philosophy
 
-**AICTE Nexus (Apex-Ind)** is designated as mission-critical digital infrastructure serving the nationwide technical education grid. It processes sensitive student lifecycle data, institutional seat allocation matrices, and inter-ministerial scholarship disbursal telemetry across 10,000+ technical institutions and 3.5+ crore student entities.
+**AICTE Nexus (Tech Guys)** is designated as mission-critical digital infrastructure serving the nationwide technical education grid. It processes sensitive student lifecycle data, institutional seat allocation matrices, and inter-ministerial scholarship disbursal telemetry across 10,000+ technical institutions and 3.5+ crore student entities.
 
 The system is engineered according to **Zero-Trust Architecture (ZTA)** and **Defense-in-Depth** principles, ensuring mathematical immutability, sub-15ms AI inference, and quantum-safe cryptographic guarantees.
 

@@ -1,6 +1,6 @@
-# 🤝 Contributing to AICTE Nexus India (Apex-Ind)
+# 🤝 Contributing to AICTE Nexus India (Tech Guys)
 
-Thank you for your interest in contributing to **AICTE Nexus (Apex-Ind)** — the National APAAR Regulatory Command Center and Autonomous Fraud Interception Grid. This project serves as a mission-critical sovereign intelligence platform under the **Ministry of Education, Government of India**, operating under strict enterprise engineering, security, and algorithmic standards.
+Thank you for your interest in contributing to **AICTE Nexus (Tech Guys)** — the National APAAR Regulatory Command Center and Autonomous Fraud Interception Grid. This project serves as a mission-critical sovereign intelligence platform under the **Ministry of Education, Government of India**, operating under strict enterprise engineering, security, and algorithmic standards.
 
 We welcome contributions from software architects, AI/ML researchers, security auditors, and full-stack developers. To ensure codebase stability, zero regulatory regressions, and adherence to production security standards, all contributors must adhere to the guidelines set out below.
 
@@ -86,8 +86,8 @@ git commit -m "WIP"
 
 ### Step 1: Fork & Clone
 ```bash
-git clone https://github.com/<your-username>/APEX-IND.git
-cd APEX-IND
+git clone https://github.com/<your-username>/NEXUS-INDIA.git
+cd NEXUS-INDIA
 ```
 
 ### Step 2: Initialize Virtual Environment
@@ -180,7 +180,7 @@ Resolves #
 
 ## 8. Maintainers & Governance
 
-* **Project Architect:** Mariyon Decosta L (RMD Team)
-* **Initiative:** AICTE Nexus India (Apex-Ind)
+* **Project Architect:** Mariyon Decosta L (Tech Guys)
+* **Initiative:** AICTE Nexus India (Tech Guys)
 * **Sponsoring Body:** Ministry of Education, Government of India
 * **Issues & Discussions:** Please open an issue on the GitHub repository for queries, design proposals, or RFC discussions.

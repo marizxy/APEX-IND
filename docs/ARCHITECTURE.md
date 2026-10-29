@@ -1,4 +1,4 @@
-# 🏛️ AICTE Nexus India (Apex-Ind) | Enterprise Architecture Specification
+# 🏛️ AICTE Nexus India (Tech Guys) | Enterprise Architecture Specification
 ### National APAAR Regulatory Command Center & Autonomous Fraud Interception Grid
 > **Ministry of Education | Government of India**  
 > *Authoritative Technical Blueprint & Systems Design Specification for Enterprise Evaluators, Hackathon Judges, and Chief Architects.*
@@ -30,8 +30,8 @@ Historically, this massive infrastructure relied on decentralized campus ERPs, p
 └───────────────────────────────┴───────────────────────────────┴─────────────────────────┘
 ```
 
-### 1.2 The Sovereign Solution: AICTE Nexus (Apex-Ind)
-**AICTE Nexus (Apex-Ind)** establishes India's first sovereign, autonomous regulatory command center. It binds every academic record to a permanent, 12-digit **APAAR ID** (*Automated Permanent Academic Account Registry*, established under the National Education Policy - NEP 2020), governed by a high-throughput **Graph Neural Network (GraphSAGE)** convolution pipeline, **SHA-256 Merkle audit chains**, and a **quantum-safe cryptographic verifier**.
+### 1.2 The Sovereign Solution: AICTE Nexus (Tech Guys)
+**AICTE Nexus (Tech Guys)** establishes India's first sovereign, autonomous regulatory command center. It binds every academic record to a permanent, 12-digit **APAAR ID** (*Automated Permanent Academic Account Registry*, established under the National Education Policy - NEP 2020), governed by a high-throughput **Graph Neural Network (GraphSAGE)** convolution pipeline, **SHA-256 Merkle audit chains**, and a **quantum-safe cryptographic verifier**.
 
 #### Verified Impact Benchmarks
 * **Proxy Ring Interception Latency:** Reduced from **6–9 months** (manual retrospective auditing) to **< 15 milliseconds** in-stream.
@@ -448,6 +448,6 @@ streamlit run frontend/app.py
 ---
 
 <p align="center">
-  <b>AICTE Nexus India (Apex-Ind)</b> • Sovereign Command Grid Architecture<br>
+  <b>AICTE Nexus India (Tech Guys)</b> • Sovereign Command Grid Architecture<br>
   <i>Designed for the Ministry of Education, Government of India • National Education Policy (NEP 2020)</i>
 </p>

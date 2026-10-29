@@ -1,4 +1,4 @@
-# 🏛️ AICTE NEXUS INDIA (Apex-Ind)
+# 🏛️ AICTE NEXUS INDIA (Tech Guys)
 ### AICTE National APAAR Regulatory Command Center & Fraud Interception Grid
 > **Ministry of Education | Government of India**  
 > *Production-Grade Autonomous Sovereign Intelligence Platform for Student Lifecycle Verification, Graph Neural Network (GNN) Proxy Admission Interception, and Quantum-Safe Cryptographic Audit Ledgers.*
@@ -48,7 +48,7 @@ Technical and higher education across India encompasses over **10,000+ technical
 * **Absence of Real-Time National Oversight:** Regulators previously depended on annual retrospective data uploads, allowing infractions to remain undiscovered for academic semesters.
 
 ### The AICTE Nexus Solution
-**AICTE Nexus (Apex-Ind)** establishes India's first unified, sovereign regulatory intelligence command grid. By binding every student admission to their lifelong 12-digit **APAAR ID** (*Automated Permanent Academic Account Registry* under NEP 2020) and validating enrollments against a high-performance **Graph Neural Network (GraphSAGE)** and **SHA-256 Merkle audit chains**, AICTE Nexus converts retrospective inspections into **sub-15ms deterministic enforcement**.
+**AICTE Nexus (Tech Guys)** establishes India's first unified, sovereign regulatory intelligence command grid. By binding every student admission to their lifelong 12-digit **APAAR ID** (*Automated Permanent Academic Account Registry* under NEP 2020) and validating enrollments against a high-performance **Graph Neural Network (GraphSAGE)** and **SHA-256 Merkle audit chains**, AICTE Nexus converts retrospective inspections into **sub-15ms deterministic enforcement**.
 
 ```
                 ┌────────────────────────────────────────────────────────┐
@@ -287,8 +287,8 @@ Follow these step-by-step instructions to deploy AICTE Nexus locally:
 ### 7.2 Clone Repository & Prepare Virtual Environment
 ```bash
 # Clone the repository
-git clone https://github.com/marizxy/APEX-IND.git
-cd APEX-IND
+git clone https://github.com/marizxy/NEXUS-INDIA.git
+cd NEXUS-INDIA
 
 # Create an isolated Python virtual environment
 python3 -m venv .venv
@@ -428,7 +428,7 @@ This project is licensed under the **MIT License**.
 ```
 MIT License
 
-Copyright (c) 2026 AICTE Nexus India / Ministry of Education, Government of India
+Copyright (c) 2026 Mariyon Decosta L
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -452,6 +452,6 @@ SOFTWARE.
 ---
 
 <p align="center">
-  <b>AICTE Nexus India</b> • An Initiative under the <i>National Education Policy (NEP 2020)</i><br>
+  <b>AICTE Nexus India (Tech Guys)</b> • An Initiative under the <i>National Education Policy (NEP 2020)</i><br>
   <i>Empowering Transparent, Sovereign, and Fraud-Free Higher Technical Education Nationwide.</i>
 </p>

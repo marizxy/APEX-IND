@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# AICTE NEXUS INDIA (Apex-Ind) - AUTOMATED STARTUP & ORCHESTRATION SCRIPT
+# AICTE NEXUS INDIA (Tech Guys) - AUTOMATED STARTUP & ORCHESTRATION SCRIPT
 # Ministry of Education | Government of India
 # Sovereign National Regulatory Command Center & Fraud Interception Grid
 # ==============================================================================
@@ -22,7 +22,7 @@ cd "${PROJECT_ROOT}"
 # Print Enterprise Header Banner
 echo -e "${CYAN}${BOLD}"
 echo "================================================================================"
-echo " 🏛️  AICTE NEXUS INDIA (Apex-Ind) | NATIONAL REGULATORY COMMAND CENTER"
+echo " 🏛️  AICTE NEXUS INDIA (Tech Guys) | NATIONAL REGULATORY COMMAND CENTER"
 echo " Ministry of Education | Government of India"
 echo " Quantum-Safe Student Lifecycle Verification & GraphSAGE GNN Grid"
 echo "================================================================================"

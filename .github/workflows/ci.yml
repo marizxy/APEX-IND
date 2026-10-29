@@ -1,0 +1,127 @@
+# ==============================================================================
+# AICTE NEXUS INDIA (Tech Guys) - CONTINUOUS INTEGRATION & SECURITY PIPELINE
+# Ministry of Education | Government of India
+# Automated Code Quality, Cryptographic Audit, and Container Validation
+# ==============================================================================
+
+name: "AICTE Nexus CI/CD & Security Verification"
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ----------------------------------------------------------------------------
+  # JOB 1: Code Quality, Linting & Compilation Verification
+  # ----------------------------------------------------------------------------
+  code-quality-and-lint:
+    name: "Python Code Quality & Static Analysis (${{ matrix.python-version }})"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - name: "Checkout Code Repository"
+        uses: actions/checkout@v4
+
+      - name: "Set up Python Environment (${{ matrix.python-version }})"
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: "Install Core & Quality Dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black bandit
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: "Verify Python Syntax Compilation (py_compile)"
+        run: |
+          echo "Compiling all Python modules across repository..."
+          python -m py_compile $(git ls-files '*.py')
+
+      - name: "Execute Flake8 Linting (PEP-8 Standards)"
+        run: |
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Exit-zero on style warnings for flexible enterprise reporting
+          flake8 . --count --exit-zero --max-complexity=15 --max-line-length=120 --statistics
+
+      - name: "Static Security Analysis with Bandit"
+        run: |
+          # Scan for common security issues (e.g., hardcoded passwords, insecure imports)
+          bandit -r backend scripts frontend -ll -ii --skip B101,B104,B311 || true
+
+  # ----------------------------------------------------------------------------
+  # JOB 2: Cryptographic Integrity, GNN Pipeline & Security Audit
+  # ----------------------------------------------------------------------------
+  security-and-telemetry-audit:
+    name: "Cryptographic Integrity & GNN Pipeline Audit"
+    runs-on: ubuntu-latest
+    needs: code-quality-and-lint
+
+    steps:
+      - name: "Checkout Code Repository"
+        uses: actions/checkout@v4
+
+      - name: "Set up Python Environment"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: "Install Dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: "Execute CERT-In & IT Act Section 70 Security Auditor"
+        run: |
+          echo "Running automated cryptographic compliance auditor..."
+          python scripts/security_audit.py
+
+      - name: "Execute Automated Batch Manifest Ingestion Pipeline (Dry-Run)"
+        run: |
+          echo "Testing GraphSAGE GNN proxy detection and Merkle proof generation..."
+          python scripts/batch_ingestion.py --dry-run
+
+      - name: "Validate Inter-Ministerial Telemetry Gateways (DigiLocker / NSP / UIDAI)"
+        run: |
+          echo "Testing sovereign API handshakes..."
+          python scripts/telemetry_sync.py
+
+  # ----------------------------------------------------------------------------
+  # JOB 3: Multi-Stage Docker Container Build Verification
+  # ----------------------------------------------------------------------------
+  docker-build-verification:
+    name: "Docker Container Build & Healthcheck"
+    runs-on: ubuntu-latest
+    needs: security-and-telemetry-audit
+
+    steps:
+      - name: "Checkout Code Repository"
+        uses: actions/checkout@v4
+
+      - name: "Set up Docker Buildx"
+        uses: actions/setup-buildx-action@v3
+
+      - name: "Build Production Docker Image"
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: aicte-nexus:ci-latest
